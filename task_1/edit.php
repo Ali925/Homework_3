@@ -14,8 +14,9 @@ fclose($handle);
 if($name!=$filename){
    $rename = rename("./files/$name", "./files/$filename");
 }
+
+	header("refresh: 5; url=index.php");
 }
-header("refresh: 5; url=index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
