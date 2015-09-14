@@ -15,8 +15,9 @@ fclose($handle);
 }
 else {
 $result = 0; }
+
+	header('refresh: 5; url=index.php');
 }
-header('refresh: 5; url=index.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
