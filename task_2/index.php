@@ -1,3 +1,14 @@
+<?php
+
+require_once 'connection.php';
+$query = "SHOW TABLES";
+$result = $mysqli->query($query);
+
+for ($i=0; $i <$result->num_rows ; $i++) { 
+	$row[$i] = $result->fetch_array(MYSQLI_NUM);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +21,11 @@
 		<div style="margin-bottom:30px;">
 		    <label for="table">Select table:</label>
 			<select name="table" id="table">
-				<option value="categories">Categories</option>
-				<option value="orders">Orders</option>
-				<option value="order_property">Order property</option>
-				<option value="products">Products</option>
-				<option value="users">Users</option>
+				<?php
+					for($i=0;$i<$result->num_rows;$i++){
+						echo "<option value='".strtolower($row[$i][0])."'>".ucfirst($row[$i][0])."</option>";
+					}
+				?>
 			</select>
 		</div>
 		<div style="margin-bottom:20px;">
